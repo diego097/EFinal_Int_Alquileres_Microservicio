@@ -1,0 +1,20 @@
+version: "3"
+
+services: 
+    web:
+        container_name: api-rest-alquiler
+        restart: always
+        build: .
+        ports: 
+            - "9000:3000"
+        links: 
+            - mongoAlquiler
+        volumes: 
+            - .:/usr/src/app
+    mongoAlquiler:
+        container_name: mongoalquiler
+        image: mongo
+        ports: 
+            - "27019:27017"
+        logging: 
+            driver: none
